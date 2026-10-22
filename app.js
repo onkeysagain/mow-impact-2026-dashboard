@@ -79,10 +79,10 @@
 
   function renderChart() {
     if (!plot) return;
-    var W = Math.max(280, plot.clientWidth);
+    var W = Math.max(260, plot.clientWidth);
     var small = W < 520;
-    var H = small ? 300 : 380;
-    var m = { t: 40, r: 8, b: 44, l: small ? 34 : 44 };
+    var H = Math.max(200, plot.clientHeight || (small ? 260 : 300));
+    var m = { t: 34, r: 6, b: 34, l: small ? 34 : 40 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b, max = 500;
     var svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, "aria-hidden": "false", focusable: "false" });
     var grid = el("g", { "class": "grid", "aria-hidden": "true" }, svg);
@@ -92,17 +92,17 @@
       var t = el("text", { x: m.l - 10, y: y + 4, "text-anchor": "end", "class": "tick" }, grid);
       t.textContent = v;
     });
-    var band = iw / YEARS.length, bw = Math.min(small ? 34 : 64, band * .62);
+    var band = iw / YEARS.length, bw = Math.min(small ? 34 : 56, band * .6);
     YEARS.forEach(function (d, i) {
       var cx = m.l + band * i + band / 2, h = (d.value / max) * ih, y = m.t + ih - h;
       var label = d.year + (d.partial ? ", partial year" : ", full year") + ": " + d.value + " children reached";
       var g = el("g", { "class": "bar", tabindex: "0", role: "img", "aria-label": label, style: "--i:" + i }, svg);
-      el("rect", { "class": "hit", x: cx - band / 2 + 2, y: m.t - 10, width: band - 4, height: ih + 10 + m.b - 6, rx: 12 }, g);
+      el("rect", { "class": "hit", x: cx - band / 2 + 2, y: m.t - 10, width: band - 4, height: ih + 10 + m.b - 4, rx: 12 }, g);
       el("path", { "class": "shape", d: topRounded(cx - bw / 2, y, bw, h, small ? 8 : 12), fill: d.partial ? "url(#hatch)" : COLORS.yellow }, g);
       var v = el("text", { "class": "vlab", x: cx, y: y - 10, "aria-hidden": "true" }, g);
       v.textContent = fmt.format(d.value);
       if (small) v.style.fontSize = "19px";
-      var xl = el("text", { "class": "xlab", x: cx, y: H - m.b + 28, "aria-hidden": "true" }, g);
+      var xl = el("text", { "class": "xlab", x: cx, y: H - m.b + 24, "aria-hidden": "true" }, g);
       xl.textContent = d.year + (d.partial ? "*" : "");
       if (small) { xl.style.fontSize = W < 360 ? "13px" : "14px"; xl.style.letterSpacing = "-.03em"; }
       var show = function () { showTip(g, d, cx, y); };
@@ -134,10 +134,13 @@
   }
   if (chart) {
     renderChart();
-    var lastW = plot.clientWidth;
-    window.addEventListener("resize", debounce(function () {
-      if (plot.clientWidth !== lastW) { lastW = plot.clientWidth; renderChart(); }
-    }, 150));
+    var lastSz = plot.clientWidth + "x" + plot.clientHeight;
+    var maybeRender = debounce(function () {
+      var sz = plot.clientWidth + "x" + plot.clientHeight;
+      if (sz !== lastSz) { lastSz = sz; renderChart(); }
+    }, 120);
+    if ("ResizeObserver" in window) new ResizeObserver(maybeRender).observe(plot);
+    else window.addEventListener("resize", maybeRender);
     if (!reduced && "IntersectionObserver" in window) {
       var chartIO = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) { chart.classList.add("is-in"); chartIO.disconnect(); }
