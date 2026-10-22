@@ -25,7 +25,11 @@
   function easeInOut(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
 
   /* ---------- Download summary ---------- */
+  var framed = false;
+  try { framed = window.self !== window.top; } catch (e) { framed = true; }
   document.querySelectorAll(".js-print").forEach(function (b) {
+    // Embedded viewers block the print dialog, so only offer it on the standalone page.
+    if (framed) { b.hidden = true; return; }
     b.addEventListener("click", function () { window.print(); });
   });
 

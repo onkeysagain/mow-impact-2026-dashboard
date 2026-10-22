@@ -105,8 +105,9 @@ a:hover { text-decoration-color: var(--coral); }
 .btn--small { min-height: 42px; padding: .5rem 1rem; font-size: .92rem; }
 
 /* ---------- Top bar ---------- */
+[hidden] { display: none !important; }
 .topbar {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
   background: rgba(255, 251, 242, .94);
   -webkit-backdrop-filter: saturate(1.2) blur(8px); backdrop-filter: saturate(1.2) blur(8px);
   border-bottom: var(--line) solid var(--ink);
