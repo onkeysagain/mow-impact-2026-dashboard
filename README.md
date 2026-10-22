@@ -36,4 +36,3 @@ GitHub Pages serves the site from the repository root.
 
 ---
 
-Dashboard designed & built by Mbongeni Moyo.
