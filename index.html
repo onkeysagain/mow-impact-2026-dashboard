@@ -17,32 +17,41 @@
   <meta property="og:image" content="https://onkeysagain.github.io/mow-impact-2026-dashboard/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The Montessori on Wheels bus with the headline Impact since 2021 and four key numbers.">
+  <meta property="og:image:alt" content="The Montessori on Wheels impact dashboard: an illustrated Denver street with the bus, and four headline numbers.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Montessori on Wheels · Impact 2021–2026">
   <meta name="twitter:description" content="What happens when the classroom comes to the community: children, families and partners reached since MoW first rolled out in Denver in June 2021.">
   <meta name="twitter:image" content="https://onkeysagain.github.io/mow-impact-2026-dashboard/assets/og-image.png">
-  <meta name="twitter:image:alt" content="The Montessori on Wheels bus with the headline Impact since 2021 and four key numbers.">
+  <meta name="twitter:image:alt" content="The Montessori on Wheels impact dashboard: an illustrated Denver street with the bus, and four headline numbers.">
 
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
+  <link rel="preload" href="assets/fonts/jakarta-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/gaegu-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/nunito-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to the dashboard</a>
+  <a class="skip-link" href="#main">Skip to the dashboards</a>
 
-  <!-- Reusable hand-drawn symbols, same thick-ink style as the logo -->
-  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+  <!-- Hand-drawn symbol set: thick ink outlines and flat fills, matching the logo -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
     <defs>
       <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <rect width="10" height="10" fill="#FFFBF2"/>
         <rect width="5" height="10" fill="#F0B323"/>
       </pattern>
+      <linearGradient id="g-bar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F7C948"/>
+        <stop offset="1" stop-color="#F0B323"/>
+      </linearGradient>
+      <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#CFE7F8"/>
+        <stop offset=".75" stop-color="#EEE6FA"/>
+        <stop offset="1" stop-color="#FCEFD9"/>
+      </linearGradient>
       <symbol id="i-star" viewBox="0 0 48 48">
         <path d="M24 5.5l5.6 11.6 12.7 1.6-9.3 8.8 2.4 12.6L24 34l-11.4 6.1 2.4-12.6-9.3-8.8 12.7-1.6z" fill="#fff" stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round"/>
       </symbol>
@@ -63,358 +72,535 @@
           <path d="M115 41l1.8 3.7 4 .5-3 2.8.8 4-3.6-2-3.6 2 .8-4-3-2.8 4-.5z" fill="#fff" stroke-width="2"/>
         </g>
       </symbol>
+      <symbol id="i-gift" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M6 20h36v21a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="#F0B323"/>
+          <path d="M4 13h40v8H4z" fill="#fff"/>
+          <path d="M24 13v30" fill="none"/>
+          <path d="M24 13c-3-7-12-8-12-3 0 3 6 3 12 3zm0 0c3-7 12-8 12-3 0 3-6 3-12 3z" fill="#E2665C"/>
+          <path d="M10 37c0-6 4-10 9-10" fill="none" stroke="#C1A7E2" stroke-width="4"/>
+        </g>
+      </symbol>
+      <symbol id="i-eye" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round">
+          <path d="M4 24c5-9 12-14 20-14s15 5 20 14c-5 9-12 14-20 14S9 33 4 24z" fill="#fff"/>
+          <circle cx="24" cy="24" r="8" fill="#9BCBEB"/>
+          <circle cx="24" cy="24" r="3" fill="#1A1A1A" stroke="none"/>
+        </g>
+      </symbol>
+      <symbol id="i-family" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round">
+          <path d="M6 42c0-9 4-15 11-15s11 6 11 15z" fill="#E2665C"/>
+          <circle cx="17" cy="15" r="7" fill="#A86B3C"/>
+          <path d="M25 42c0-6 4-10 9-10s9 4 9 10z" fill="#F0B323"/>
+          <circle cx="34" cy="24" r="5" fill="#6B4226"/>
+        </g>
+      </symbol>
+      <symbol id="i-book" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M24 13c-5-3-12-4-19-3v27c7-1 14 0 19 3 5-3 12-4 19-3V10c-7-1-14 0-19 3z" fill="#fff"/>
+          <path d="M24 13v27" fill="none"/>
+          <path d="M10 19h8M10 25h8M30 19h8M30 25h6" fill="none" stroke="#E2665C" stroke-width="3"/>
+        </g>
+      </symbol>
+      <symbol id="i-village" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round">
+          <path d="M4 42V25l9-8 9 8v17z" fill="#C1A7E2"/>
+          <path d="M22 42V21l11-9 11 9v21z" fill="#F0B323"/>
+          <path d="M29 42v-9h8v9" fill="#fff"/>
+          <path d="M10 42v-7h6v7" fill="#fff"/>
+        </g>
+      </symbol>
+      <symbol id="i-beyond" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round">
+          <path d="M24 45S9 31 9 19a15 15 0 0 1 30 0c0 12-15 26-15 26z" fill="#C1A7E2"/>
+          <path d="M24 10.5l2.9 5.9 6.5.8-4.8 4.5 1.2 6.4-5.8-3.1-5.8 3.1 1.2-6.4-4.8-4.5 6.5-.8z" fill="#fff" stroke-width="2.4"/>
+        </g>
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+          <ellipse cx="24" cy="42" rx="12" ry="3.5" fill="#C1A7E2"/>
+          <path d="M24 42S10 28 10 18a14 14 0 0 1 28 0c0 10-14 24-14 24z" fill="#E2665C"/>
+          <circle cx="24" cy="18" r="5.5" fill="#fff"/>
+        </g>
+      </symbol>
+      <symbol id="i-school" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M7 22L24 9l17 13v20H7z" fill="#F0B323"/>
+          <path d="M19 42V31h10v11" fill="#fff"/>
+          <circle cx="24" cy="21" r="4" fill="#fff"/>
+          <path d="M24 9V3h7v4h-7" fill="#E2665C"/>
+        </g>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+          <circle cx="24" cy="25" r="17" fill="#9BCBEB"/>
+          <circle cx="24" cy="25" r="11.5" fill="#fff" stroke-width="0"/>
+          <path d="M24 17v8l6 4M17 5h14" fill="none"/>
+        </g>
+      </symbol>
+      <symbol id="i-states" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round">
+          <path d="M6 5h36v18H6z" fill="#9BCBEB"/>
+          <path d="M6 25h31v18H14v-4H6z" fill="#C1A7E2"/>
+        </g>
+      </symbol>
+      <symbol id="i-sign" viewBox="0 0 48 48">
+        <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M24 26v18M17 44h14" fill="none"/>
+          <circle cx="24" cy="15" r="12" fill="#F0B323"/>
+          <path d="M17 11h14v7H17zM19.5 18v3M28.5 18v3" fill="#fff" stroke-width="2.4"/>
+        </g>
+      </symbol>
+      <symbol id="i-kid" viewBox="0 0 20 40">
+        <g stroke="#1A1A1A" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M7 31v7M13 31v7" fill="none"/>
+          <path d="M4 32c0-8 2.5-13 6-13s6 5 6 13z" fill="currentColor"/>
+          <circle cx="10" cy="11" r="8" fill="#2B1B12" stroke="none"/>
+          <circle cx="10" cy="13" r="5.4" fill="var(--skin, #8D5524)"/>
+        </g>
+      </symbol>
+      <symbol id="i-house" viewBox="0 0 40 36">
+        <g stroke="#1A1A1A" stroke-width="2.4" stroke-linejoin="round">
+          <path d="M5 34V16h30v18z" fill="var(--wall, #fff)"/>
+          <path d="M2 17L20 3l18 14z" fill="var(--roof, #E2665C)"/>
+          <path d="M17 34v-9h6v9" fill="#fff"/>
+          <path d="M9 20h5v5H9zM26 20h5v5h-5z" fill="#9BCBEB"/>
+        </g>
+      </symbol>
+      <symbol id="i-tree" viewBox="0 0 30 44">
+        <g stroke="#1A1A1A" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M15 42V24" fill="none"/>
+          <circle cx="15" cy="15" r="12" fill="var(--leaf, #C1A7E2)"/>
+        </g>
+      </symbol>
     </defs>
   </svg>
 
-  <header class="topbar">
-    <div class="topbar__inner wrap wrap--wide">
-      <a class="brand" href="#top">
-        <img src="assets/mow-bus-circle-sm.webp" width="40" height="40" alt="Montessori on Wheels" decoding="async">
-        <span class="brand__text">Impact Report <span class="brand__date">· 2021–2026</span></span>
+  <!-- Soft colour field behind the glass -->
+  <div class="field" aria-hidden="true">
+    <span class="blob blob--yellow"></span>
+    <span class="blob blob--sky"></span>
+    <span class="blob blob--coral"></span>
+    <span class="blob blob--lavender"></span>
+  </div>
+
+  <div class="app">
+    <!-- ============ SIDEBAR (desktop) ============ -->
+    <aside class="side glass" aria-label="Report navigation">
+      <a class="side__logo" href="#overview">
+        <img src="assets/mow-logo-lockup.webp" width="560" height="380" loading="lazy" decoding="async"
+             alt="Montessori on Wheels logo: a yellow school bus with a heart, a rainbow and a star, and the tagline learning. anywhere, anytime.">
       </a>
-      <nav class="topnav" aria-label="Sections">
-        <ul>
-          <li><a href="#top">Dashboard</a></li>
-          <li><a href="#route">Ride the route</a></li>
-          <li><a href="#milestones">Road trip</a></li>
-          <li><a href="#roots">Our roots</a></li>
-          <li><a href="#ride">Ride with us</a></li>
+      <nav class="side__nav" aria-label="Dashboards">
+        <p class="side__label">Impact report</p>
+        <ul role="list">
+          <li><a class="side__link js-navlink" href="#overview" data-board="overview">
+            <span class="side__ico side__ico--yellow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span>
+            <span class="side__text"><span class="side__step">01</span>Overview</span></a></li>
+          <li><a class="side__link js-navlink" href="#reach" data-board="reach">
+            <span class="side__ico side__ico--coral" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c3 0 3-6 7-6s4-6 7-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="5" cy="19" r="2.4" fill="currentColor"/><circle cx="19" cy="7" r="2.4" fill="currentColor"/></svg></span>
+            <span class="side__text"><span class="side__step">02</span>Reach &amp; growth</span></a></li>
+          <li><a class="side__link js-navlink" href="#journey" data-board="journey">
+            <span class="side__ico side__ico--sky" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></span>
+            <span class="side__text"><span class="side__step">03</span>Community &amp; journey</span></a></li>
         </ul>
       </nav>
-      <button class="btn btn--small btn--ink js-print" type="button">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="btn__long">Download summary</span><span class="btn__short">Summary</span>
-      </button>
-    </div>
-  </header>
 
-  <main id="main">
-    <!-- ============ DASHBOARD: everything from the impact report, one screen ============ -->
-    <section class="dash" id="top" aria-labelledby="hero-title">
-      <div class="wrap wrap--wide dash__grid">
+      <div class="side__meta">
+        <p class="chip chip--sky"><svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-star"/></svg>As of September 2026</p>
+        <button class="btn btn--glass btn--block js-print" type="button">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download summary
+        </button>
+      </div>
 
-        <header class="dash__head">
-          <img class="dash__logo" src="assets/mow-logo-lockup.webp"
-               srcset="assets/mow-logo-lockup.webp 560w, assets/mow-logo-lockup-840.webp 840w"
-               sizes="(min-width: 900px) 190px, 150px"
-               width="560" height="380" fetchpriority="high"
-               alt="Montessori on Wheels logo: a yellow school bus with a heart, a rainbow and a star, and the tagline learning. anywhere, anytime.">
-          <div class="dash__title">
-            <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Montessori on Wheels · Impact Report</p>
-            <h1 id="hero-title" class="display">Impact since 2021.</h1>
+      <div class="side__cta">
+        <svg class="side__cta-bus" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
+        <p class="side__cta-title">Ride with us</p>
+        <p class="side__cta-text">Help keep the classroom rolling into the next neighborhood.</p>
+        <a class="btn btn--ink btn--block" href="https://www.montessorionwheels.org/why-give">Why give</a>
+      </div>
+    </aside>
+
+    <!-- ============ TOP BAR (tablet & phone) ============ -->
+    <header class="mbar glass">
+      <div class="mbar__row">
+        <a class="mbar__brand" href="#overview"><img src="assets/mow-bus-circle-sm.webp" width="40" height="40" alt="Montessori on Wheels"><span>Impact Report</span></a>
+        <button class="btn btn--ink btn--small js-print" type="button">Download summary</button>
+      </div>
+      <nav class="mbar__tabs" aria-label="Dashboards">
+        <a class="mbar__tab js-navlink" href="#overview" data-board="overview">01 Overview</a>
+        <a class="mbar__tab js-navlink" href="#reach" data-board="reach">02 Reach &amp; growth</a>
+        <a class="mbar__tab js-navlink" href="#journey" data-board="journey">03 Community</a>
+      </nav>
+    </header>
+
+    <main id="main" class="boards">
+
+      <!-- =================== DASHBOARD 01 · OVERVIEW =================== -->
+      <section class="board" id="overview" aria-labelledby="hero-title">
+        <div class="board__grid">
+
+          <article class="card hero glass">
+            <div class="hero__copy">
+              <p class="kicker"><span class="kicker__num">01</span>Montessori on Wheels · Impact Report</p>
+              <h1 id="hero-title" class="hand hero__title">Impact since 2021.</h1>
+              <p class="hero__lede">What happens when the classroom comes to the community: children, families and partners reached since MoW first rolled out in Denver in June 2021.</p>
+              <div class="hero__meta">
+                <p class="chip chip--sky"><svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-star"/></svg>As of September 2026</p>
+                <a class="btn btn--ink js-next-inline" href="#reach">Explore the route
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h13m0 0l-5-5m5 5l-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <figure class="scene js-scene" aria-labelledby="scene-cap">
+              <figcaption id="scene-cap" class="sr-only">An illustrated Denver street. The Montessori on Wheels bus drives a road with five stops, one for each program. Choose a stop to see its reach.</figcaption>
+              <svg class="scene__art" viewBox="0 0 760 260" aria-hidden="true" focusable="false">
+                <rect width="760" height="260" fill="url(#g-sky)"/>
+                <g class="scene__sun">
+                  <g class="scene__rays" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round">
+                    <path d="M690 14v-8M690 98v-8M652 52h-8M736 52h-8M663 25l-6-6M723 85l-6-6M717 25l6-6M657 85l6-6"/>
+                  </g>
+                  <circle cx="690" cy="52" r="24" fill="#F0B323" stroke="#1A1A1A" stroke-width="3"/>
+                </g>
+                <g fill="none" stroke-linecap="round" opacity=".9">
+                  <path d="M380 205a150 150 0 0 1 300 0" stroke="#C1A7E2" stroke-width="12"/>
+                  <path d="M392 205a138 138 0 0 1 276 0" stroke="#9BCBEB" stroke-width="12"/>
+                  <path d="M404 205a126 126 0 0 1 252 0" stroke="#E2665C" stroke-width="12"/>
+                </g>
+                <g class="scene__cloud scene__cloud--a" fill="#fff" stroke="#1A1A1A" stroke-width="2.6" stroke-linejoin="round">
+                  <path d="M96 66c-12 0-14-15-2-17 1-12 19-14 23-4 9-6 21 1 18 11 9 2 7 10-1 10z"/>
+                </g>
+                <g class="scene__cloud scene__cloud--b" fill="#fff" stroke="#1A1A1A" stroke-width="2.6" stroke-linejoin="round">
+                  <path d="M430 46c-10 0-12-12-2-14 1-10 16-12 19-3 8-5 18 1 15 9 8 2 6 8-1 8z"/>
+                </g>
+                <g stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
+                  <path d="M250 200l80-92 50 56 64-84 74 82 54-50 70 72 128 0v16H250z" fill="#DCCDF1"/>
+                  <path d="M318 122l12-14 14 16-8 6zM432 94l12-14 13 16-9 5z" fill="#fff" stroke-width="2.4"/>
+                  <path d="M-10 204l70-78 46 46 56-60 82 92z" fill="#B9DAF1"/>
+                  <path d="M50 137l10-11 12 12-8 4zM152 124l10-12 12 13-9 4z" fill="#fff" stroke-width="2.4"/>
+                </g>
+                <path d="M-10 198c120-16 240 8 380-6s260-14 400-2v80H-10z" fill="#FCE3A6" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/>
+                <use href="#i-tree" x="196" y="150" width="28" height="42" style="--leaf:#C1A7E2"/>
+                <use href="#i-house" x="226" y="160" width="40" height="36" style="--roof:#E2665C"/>
+                <use href="#i-house" x="300" y="164" width="34" height="30" style="--roof:#C1A7E2; --wall:#FFF4D6"/>
+                <use href="#i-tree" x="452" y="146" width="28" height="42" style="--leaf:#9BCBEB"/>
+                <use href="#i-house" x="566" y="156" width="40" height="36" style="--roof:#9BCBEB; --wall:#FDE7E4"/>
+                <use href="#i-tree" x="612" y="150" width="26" height="40" style="--leaf:#E2665C"/>
+                <path class="js-scene-road" d="M-30 238C60 226 110 212 170 220S270 248 350 238 470 204 540 214 660 244 790 226" fill="none" stroke="#1A1A1A" stroke-width="31" stroke-linecap="round"/>
+                <path d="M-30 238C60 226 110 212 170 220S270 248 350 238 470 204 540 214 660 244 790 226" fill="none" stroke="#FFF8EA" stroke-width="24" stroke-linecap="round"/>
+                <path d="M-30 238C60 226 110 212 170 220S270 248 350 238 470 204 540 214 660 244 790 226" fill="none" stroke="#1A1A1A" stroke-width="2.4" stroke-dasharray="2 11" stroke-linecap="round" opacity=".45"/>
+                <use href="#i-kid" x="30" y="168" width="16" height="32" style="color:#E2665C; --skin:#8D5524"/>
+                <use href="#i-kid" x="46" y="174" width="13" height="26" style="color:#9BCBEB; --skin:#C68642"/>
+                <use href="#i-kid" x="190" y="176" width="15" height="30" style="color:#C1A7E2; --skin:#5C3A21"/>
+                <g class="js-scene-stops"></g>
+                <g class="js-scene-bus scene__bus"><g class="scene__bob"><use href="#i-bus" x="-36" y="-40" width="72" height="44"/></g></g>
+              </svg>
+              <div class="scene__hits js-scene-hits"></div>
+              <div class="bubble js-bubble" aria-hidden="true"></div>
+            </figure>
+          </article>
+
+          <h2 class="sr-only">Headline numbers</h2>
+          <ul class="kpis" role="list">
+            <li class="card kpi glass">
+              <span class="kpi__ico kpi__ico--yellow" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-star"/></svg></span>
+              <p class="kpi__label">Children reached</p>
+              <p class="kpi__value"><span class="js-count" data-value="1129">1,129</span></p>
+              <p class="kpi__sub">Ages 0–6, across all programs</p>
+            </li>
+            <li class="card kpi glass">
+              <span class="kpi__ico kpi__ico--coral" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-heart"/></svg></span>
+              <p class="kpi__label">Families engaged</p>
+              <p class="kpi__value"><span class="js-count" data-value="719">719</span></p>
+              <p class="kpi__sub">Caregivers learning alongside children</p>
+            </li>
+            <li class="card kpi glass">
+              <span class="kpi__ico kpi__ico--sky" aria-hidden="true"><svg viewBox="0 0 120 74"><use href="#i-bus"/></svg></span>
+              <p class="kpi__label">Bus visits</p>
+              <p class="kpi__value"><span class="js-count" data-value="296">296</span></p>
+              <p class="kpi__sub">Neighborhood stops since launch</p>
+            </li>
+            <li class="card kpi glass">
+              <span class="kpi__ico kpi__ico--lavender" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-gift"/></svg></span>
+              <p class="kpi__label">Learning kits shared</p>
+              <p class="kpi__value"><span class="js-count" data-value="520">520</span></p>
+              <p class="kpi__sub">Montessori materials sent home</p>
+            </li>
+          </ul>
+
+          <article class="card glass panel panel--chart chart js-chart" data-mode="tip" aria-labelledby="c1-title">
+            <header class="panel__head">
+              <div>
+                <h2 id="c1-title" class="panel__title">Children reached each year</h2>
+                <p class="panel__sub">Counts by program year</p>
+              </div>
+              <ul class="legend" role="list" aria-label="Chart legend">
+                <li><span class="legend__swatch legend__swatch--full" aria-hidden="true"></span>Full year</li>
+                <li><span class="legend__swatch legend__swatch--partial" aria-hidden="true"></span>* Partial year</li>
+              </ul>
+            </header>
+            <div class="chart__plot js-chart-plot" role="group" aria-label="Children reached per program year: one bar per year"></div>
+            <div class="chart__tip" role="status" aria-live="polite"></div>
+            <div class="sr-only">
+              <table>
+                <caption>Children reached per program year (* partial year)</caption>
+                <thead><tr><th scope="col">Program year</th><th scope="col">Children reached</th><th scope="col">Year type</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">2021*</th><td>90</td><td>Partial year</td></tr>
+                  <tr><th scope="row">2022</th><td>210</td><td>Full year</td></tr>
+                  <tr><th scope="row">2023</th><td>260</td><td>Full year</td></tr>
+                  <tr><th scope="row">2024</th><td>300</td><td>Full year</td></tr>
+                  <tr><th scope="row">2025*</th><td>139</td><td>Partial year</td></tr>
+                  <tr><th scope="row">2026*</th><td>130</td><td>Partial year</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card glass panel panel--programs" aria-labelledby="p1-title">
+            <header class="panel__head">
+              <div>
+                <h2 id="p1-title" class="panel__title">Reach by program</h2>
+                <p class="panel__sub">The five stops on the MoW route</p>
+              </div>
+            </header>
+            <ol class="minis" role="list">
+              <li class="mini" style="--k:1" data-color="yellow"><span class="mini__num" aria-hidden="true">1</span><span class="mini__name"><span class="sr-only">Stop 1: </span>Exposure to Montessori <span class="tag">Access</span></span><span class="mini__fig"><strong>1,240</strong> children</span></li>
+              <li class="mini" style="--k:.70" data-color="coral"><span class="mini__num" aria-hidden="true">2</span><span class="mini__name"><span class="sr-only">Stop 2: </span>Caregiver &amp; Child <span class="tag">Family</span></span><span class="mini__fig"><strong>610</strong> families</span></li>
+              <li class="mini" style="--k:.38" data-color="sky"><span class="mini__num" aria-hidden="true">3</span><span class="mini__name"><span class="sr-only">Stop 3: </span>Targeted Interventions <span class="tag">Support</span></span><span class="mini__fig"><strong>180</strong> children in literacy support</span></li>
+              <li class="mini" style="--k:.14" data-color="lavender"><span class="mini__num" aria-hidden="true">4</span><span class="mini__name"><span class="sr-only">Stop 4: </span>Community Partnerships <span class="tag">Village</span></span><span class="mini__fig"><strong>24</strong> partner organizations</span></li>
+              <li class="mini" style="--k:.05" data-color="star"><span class="mini__num" aria-hidden="true">5</span><span class="mini__name"><span class="sr-only">Stop 5: </span>Embedded Learning <span class="tag">Beyond Denver</span></span><span class="mini__fig"><strong>3</strong> partners learning the framework</span></li>
+            </ol>
+          </article>
+
+          <div class="stack">
+            <article class="card glass panel panel--community" aria-labelledby="cm1-title">
+              <header class="panel__head"><h2 id="cm1-title" class="panel__title">Across the community</h2></header>
+              <ul class="chips" role="list">
+                <li class="stat stat--coral"><svg class="stat__ico" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-pin"/></svg><span class="stat__value js-count" data-value="14">14</span><span class="stat__label">Neighborhoods served</span></li>
+                <li class="stat stat--yellow"><svg class="stat__ico" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-school"/></svg><span class="stat__value js-count" data-value="6">6</span><span class="stat__label">School partners</span></li>
+                <li class="stat stat--sky"><svg class="stat__ico" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-clock"/></svg><span class="stat__value js-count" data-value="2100">2,100</span><span class="stat__label">Volunteer hours</span></li>
+                <li class="stat stat--lavender"><svg class="stat__ico" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-states"/></svg><span class="stat__value js-count" data-value="2">2</span><span class="stat__label">States reached</span></li>
+              </ul>
+            </article>
+            <article class="card panel panel--quote" aria-labelledby="q1-title">
+              <h2 id="q1-title" class="panel__kicker">What drives us</h2>
+              <figure class="quote">
+                <blockquote><p class="hand">“You can<span class="apos">’</span>t choose what you<span class="apos">’</span>re not exposed to.”</p></blockquote>
+                <figcaption>— Montessori on Wheels</figcaption>
+              </figure>
+            </article>
           </div>
-          <p class="dash__lede">What happens when the classroom comes to the community: children, families and partners reached since MoW first rolled out in Denver in June 2021.</p>
-          <div class="dash__road" aria-hidden="true">
-            <svg viewBox="0 0 120 74"><use href="#i-bus"/></svg>
+        </div>
+
+        <a class="nextstop js-next" href="#reach">
+          <span class="nextstop__sign" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-sign"/></svg></span>
+          <span class="nextstop__text"><span class="nextstop__kicker">Next stop · 02</span><span class="nextstop__dest">Reach &amp; growth</span></span>
+          <span class="nextstop__road" aria-hidden="true"><svg class="nextstop__bus" viewBox="0 0 120 74"><use href="#i-bus"/></svg></span>
+          <svg class="nextstop__arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><path d="M12 5v13m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </section>
+
+      <!-- =================== DASHBOARD 02 · REACH & GROWTH =================== -->
+      <section class="board" id="reach" aria-labelledby="reach-title">
+        <header class="board__head">
+          <div>
+            <p class="kicker"><span class="kicker__num">02</span>Reach by program</p>
+            <h2 id="reach-title" class="board__title">The five stops on the MoW route</h2>
           </div>
-          <p class="asof"><svg aria-hidden="true" focusable="false" width="20" height="20"><use href="#i-star"/></svg>As of September 2026</p>
+          <p class="board__note">Every program is a stop where the classroom meets a neighborhood. Scroll to ride along, or choose a stop to pull the bus over.</p>
         </header>
 
-        <h2 class="sr-only">Headline numbers</h2>
-        <ul class="kpis" role="list">
-          <li class="kpi kpi--yellow">
-            <p class="kpi__label">Children reached</p>
-            <p class="kpi__value display"><span class="js-count" data-value="1129">1,129</span></p>
-            <p class="kpi__sub">Ages 0–6, across all programs</p>
-            <svg class="kpi__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-star"/></svg>
-          </li>
-          <li class="kpi kpi--coral">
-            <p class="kpi__label">Families engaged</p>
-            <p class="kpi__value display"><span class="js-count" data-value="719">719</span></p>
-            <p class="kpi__sub">Caregivers learning alongside children</p>
-            <svg class="kpi__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-heart"/></svg>
-          </li>
-          <li class="kpi kpi--sky">
-            <p class="kpi__label">Bus visits</p>
-            <p class="kpi__value display"><span class="js-count" data-value="296">296</span></p>
-            <p class="kpi__sub">Neighborhood stops since launch</p>
-            <svg class="kpi__icon kpi__icon--wide" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
-          </li>
-          <li class="kpi kpi--lavender">
-            <p class="kpi__label">Learning kits shared</p>
-            <p class="kpi__value display"><span class="js-count" data-value="520">520</span></p>
-            <p class="kpi__sub">Montessori materials sent home</p>
-            <svg class="kpi__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48">
-              <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-                <path d="M6 20h36v21a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="#F0B323"/>
-                <path d="M4 13h40v8H4z" fill="#fff"/>
-                <path d="M24 13v30" fill="none"/>
-                <path d="M24 13c-3-7-12-8-12-3 0 3 6 3 12 3zm0 0c3-7 12-8 12-3 0 3-6 3-12 3z" fill="#E2665C"/>
-                <path d="M10 37c0-6 4-10 9-10" fill="none" stroke="#C1A7E2" stroke-width="4"/>
-              </g>
-            </svg>
-          </li>
-        </ul>
+        <div class="board__grid">
+          <article class="card glass panel panel--route" aria-label="Route of the five program stops">
+            <div class="route js-route">
+              <svg class="route__svg" aria-hidden="true" focusable="false"></svg>
+              <ol class="stops" role="list">
+                <li class="stop" data-stop="0" data-value="1240" data-color="yellow">
+                  <button class="stop__card" type="button" aria-describedby="stop-hint">
+                    <span class="stop__top"><span class="stop__ico" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-eye"/></svg></span><span class="stop__num" aria-hidden="true">1</span></span>
+                    <span class="stop__meta"><span class="sr-only">Stop 1: </span><span class="stop__name">Exposure to Montessori</span><span class="tag">Access</span></span>
+                    <span class="stop__figure"><span class="stop__value">1,240</span> <span class="stop__unit">children</span></span>
+                  </button>
+                </li>
+                <li class="stop" data-stop="1" data-value="610" data-color="coral">
+                  <button class="stop__card" type="button" aria-describedby="stop-hint">
+                    <span class="stop__top"><span class="stop__ico" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-family"/></svg></span><span class="stop__num" aria-hidden="true">2</span></span>
+                    <span class="stop__meta"><span class="sr-only">Stop 2: </span><span class="stop__name">Caregiver &amp; Child</span><span class="tag">Family</span></span>
+                    <span class="stop__figure"><span class="stop__value">610</span> <span class="stop__unit">families</span></span>
+                  </button>
+                </li>
+                <li class="stop" data-stop="2" data-value="180" data-color="sky">
+                  <button class="stop__card" type="button" aria-describedby="stop-hint">
+                    <span class="stop__top"><span class="stop__ico" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-book"/></svg></span><span class="stop__num" aria-hidden="true">3</span></span>
+                    <span class="stop__meta"><span class="sr-only">Stop 3: </span><span class="stop__name">Targeted Interventions</span><span class="tag">Support</span></span>
+                    <span class="stop__figure"><span class="stop__value">180</span> <span class="stop__unit">children in literacy support</span></span>
+                  </button>
+                </li>
+                <li class="stop" data-stop="3" data-value="24" data-color="lavender">
+                  <button class="stop__card" type="button" aria-describedby="stop-hint">
+                    <span class="stop__top"><span class="stop__ico" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-village"/></svg></span><span class="stop__num" aria-hidden="true">4</span></span>
+                    <span class="stop__meta"><span class="sr-only">Stop 4: </span><span class="stop__name">Community Partnerships</span><span class="tag">Village</span></span>
+                    <span class="stop__figure"><span class="stop__value">24</span> <span class="stop__unit">partner organizations</span></span>
+                  </button>
+                </li>
+                <li class="stop" data-stop="4" data-value="3" data-color="star">
+                  <button class="stop__card" type="button" aria-describedby="stop-hint">
+                    <span class="stop__top"><span class="stop__ico" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-beyond"/></svg></span><span class="stop__num" aria-hidden="true">5</span></span>
+                    <span class="stop__meta"><span class="sr-only">Stop 5: </span><span class="stop__name">Embedded Learning</span><span class="tag">Beyond Denver</span></span>
+                    <span class="stop__figure"><span class="stop__value">3</span> <span class="stop__unit">partners learning the framework</span></span>
+                  </button>
+                </li>
+              </ol>
+              <p id="stop-hint" class="sr-only">Moves the bus to this stop on the route.</p>
+            </div>
+          </article>
 
-        <!-- Community -->
-        <article class="panel panel--community" id="community" aria-labelledby="community-title">
-          <header class="panel__head"><h2 id="community-title" class="panel__title display">Across the community</h2></header>
+          <article class="card glass panel panel--chart2 chart js-chart" data-mode="focus" aria-labelledby="c2-title">
+            <header class="panel__head">
+              <div>
+                <h3 id="c2-title" class="panel__title">Children reached each year</h3>
+                <p class="panel__sub">Counts by program year · choose a bar to focus on a year</p>
+              </div>
+              <ul class="legend" role="list" aria-label="Chart legend">
+                <li><span class="legend__swatch legend__swatch--full" aria-hidden="true"></span>Full year</li>
+                <li><span class="legend__swatch legend__swatch--partial" aria-hidden="true"></span>* Partial year</li>
+              </ul>
+            </header>
+            <div class="chart__plot js-chart-plot" role="group" aria-label="Children reached per program year: one bar per year"></div>
+          </article>
+
+          <div class="stack stack--focus">
+            <article class="card panel panel--focus" aria-labelledby="f-title">
+              <h3 id="f-title" class="panel__kicker">Year in focus</h3>
+              <div class="js-focus" aria-live="polite">
+                <p class="focus__year js-focus-year">2024</p>
+                <p class="focus__value"><span class="js-focus-value">300</span> <span class="focus__unit">children reached</span></p>
+                <p class="chip js-focus-type">Full year</p>
+              </div>
+            </article>
+            <figure class="card glass panel panel--voice">
+              <svg class="voice__bus" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
+              <blockquote><p class="hand">“When is the bus coming back?”</p></blockquote>
+              <figcaption>Families ask after exposure visits, from the MoW Strategic Roadmap.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <a class="nextstop js-next" href="#journey">
+          <span class="nextstop__sign" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-sign"/></svg></span>
+          <span class="nextstop__text"><span class="nextstop__kicker">Next stop · 03</span><span class="nextstop__dest">Community &amp; journey</span></span>
+          <span class="nextstop__road" aria-hidden="true"><svg class="nextstop__bus" viewBox="0 0 120 74"><use href="#i-bus"/></svg></span>
+          <svg class="nextstop__arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><path d="M12 5v13m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </section>
+
+      <!-- =================== DASHBOARD 03 · COMMUNITY & JOURNEY =================== -->
+      <section class="board" id="journey" aria-labelledby="journey-title">
+        <header class="board__head">
+          <div>
+            <p class="kicker"><span class="kicker__num">03</span>Community &amp; journey</p>
+            <h2 id="journey-title" class="board__title">Across the community</h2>
+          </div>
+          <p class="board__note">Neighbors, schools and volunteers who make each stop possible, and the road from Denver to a second state.</p>
+        </header>
+
+        <div class="board__grid">
           <ul class="tiles" role="list">
-            <li class="tile tile--coral">
-              <svg class="tile__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48">
-                <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-                  <ellipse cx="24" cy="42" rx="12" ry="3.5" fill="#C1A7E2"/>
-                  <path d="M24 42S10 28 10 18a14 14 0 0 1 28 0c0 10-14 24-14 24z" fill="#E2665C"/>
-                  <circle cx="24" cy="18" r="5.5" fill="#fff"/>
-                </g>
-              </svg>
-              <p class="tile__value display"><span class="js-count" data-value="14">14</span></p>
+            <li class="card tile tile--coral">
+              <svg class="tile__art" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-pin"/></svg>
+              <p class="tile__value"><span class="js-count" data-value="14">14</span></p>
               <p class="tile__label">Neighborhoods served</p>
             </li>
-            <li class="tile tile--yellow">
-              <svg class="tile__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48">
-                <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-                  <path d="M7 22L24 9l17 13v20H7z" fill="#F0B323"/>
-                  <path d="M19 42V31h10v11" fill="#fff"/>
-                  <circle cx="24" cy="21" r="4" fill="#fff"/>
-                  <path d="M24 9V3h7v4h-7" fill="#E2665C"/>
-                </g>
-              </svg>
-              <p class="tile__value display"><span class="js-count" data-value="6">6</span></p>
+            <li class="card tile tile--yellow">
+              <svg class="tile__art" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-school"/></svg>
+              <p class="tile__value"><span class="js-count" data-value="6">6</span></p>
               <p class="tile__label">School partners</p>
             </li>
-            <li class="tile tile--sky">
-              <svg class="tile__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48">
-                <g stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-                  <circle cx="24" cy="25" r="17" fill="#9BCBEB"/>
-                  <circle cx="24" cy="25" r="11.5" fill="#fff" stroke-width="0"/>
-                  <path d="M24 17v8l6 4" fill="none"/>
-                  <path d="M17 5h14" fill="none"/>
-                </g>
-              </svg>
-              <p class="tile__value display"><span class="js-count" data-value="2100">2,100</span></p>
+            <li class="card tile tile--sky">
+              <svg class="tile__art" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-clock"/></svg>
+              <p class="tile__value"><span class="js-count" data-value="2100">2,100</span></p>
               <p class="tile__label">Volunteer hours</p>
             </li>
-            <li class="tile tile--lavender">
-              <svg class="tile__icon" aria-hidden="true" focusable="false" viewBox="0 0 48 48">
-                <g stroke="#1A1A1A" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
-                  <path d="M6 5h36v18H6z" fill="#9BCBEB"/>
-                  <path d="M6 25h31v18H14v-4H6z" fill="#C1A7E2"/>
-                </g>
-              </svg>
-              <p class="tile__value display"><span class="js-count" data-value="2">2</span></p>
+            <li class="card tile tile--lavender">
+              <svg class="tile__art" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><use href="#i-states"/></svg>
+              <p class="tile__value"><span class="js-count" data-value="2">2</span></p>
               <p class="tile__label">States reached</p>
             </li>
           </ul>
-        </article>
 
-        <!-- Chart -->
-        <article class="panel panel--chart chart js-chart" id="growth" aria-labelledby="growth-title" aria-describedby="chart-desc">
-          <header class="panel__head">
-            <div>
-              <h2 id="growth-title" class="panel__title display">Children reached each year</h2>
-              <p class="panel__sub">Counts by program year</p>
+          <article class="card glass panel panel--map" aria-labelledby="ms-title">
+            <header class="panel__head">
+              <div>
+                <h3 id="ms-title" class="panel__title">Milestones</h3>
+                <p class="panel__sub">From Denver to New Mexico</p>
+              </div>
+              <p class="chip chip--lavender">2 states reached</p>
+            </header>
+            <div class="trip">
+              <svg class="trip__map" viewBox="0 0 460 420" role="img" aria-labelledby="map-title map-desc">
+                <title id="map-title">Route from Denver, Colorado to New Mexico</title>
+                <desc id="map-desc">A stylized map of Colorado above New Mexico. A dashed road runs from Denver south to Keres Children’s Learning Center in New Mexico.</desc>
+                <g stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round">
+                  <path d="M40 22h372l-2 172H40z" fill="#9BCBEB"/>
+                  <path d="M40 206h346l-2 168H112v18H40z" fill="#C1A7E2"/>
+                </g>
+                <text x="62" y="58" class="map__state">COLORADO</text>
+                <text x="62" y="240" class="map__state">NEW MEXICO</text>
+                <path class="map__route" d="M282 92C330 150 200 170 230 230S190 270 200 286" fill="none" stroke="#1A1A1A" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round"/>
+                <use href="#i-star" x="262" y="72" width="40" height="40"/>
+                <text x="304" y="100" class="map__label">Denver</text>
+                <use href="#i-heart" x="180" y="268" width="40" height="40"/>
+                <text x="132" y="330" class="map__label">Keres Children’s</text>
+                <text x="132" y="350" class="map__label">Learning Center</text>
+                <g class="map__bus" transform="translate(196 160) rotate(12)"><use href="#i-bus" width="72" height="44"/></g>
+              </svg>
+              <ol class="timeline" role="list">
+                <li class="timeline__stop">
+                  <span class="timeline__pin timeline__pin--yellow" aria-hidden="true"></span>
+                  <p class="timeline__date">June 2021</p>
+                  <p class="timeline__text">Montessori on Wheels launches in Denver</p>
+                </li>
+                <li class="timeline__stop">
+                  <span class="timeline__pin timeline__pin--coral" aria-hidden="true"></span>
+                  <p class="timeline__date">2026</p>
+                  <p class="timeline__text">Partnership signed with Keres Children’s Learning Center, New Mexico</p>
+                </li>
+                <li class="timeline__stop">
+                  <span class="timeline__pin timeline__pin--lavender" aria-hidden="true"></span>
+                  <p class="timeline__date">Oct 2026</p>
+                  <p class="timeline__text">Keres engagement begins (through Feb 2027)</p>
+                </li>
+                <li class="timeline__note">Keres is the first concrete step toward the roadmap’s 2028 goal: two pilot communities offering their own culturally relevant, MoW-inspired Montessori programs.</li>
+              </ol>
             </div>
-            <ul class="legend" role="list" aria-label="Chart legend">
-              <li><span class="legend__swatch legend__swatch--full" aria-hidden="true"></span>Full year</li>
-              <li><span class="legend__swatch legend__swatch--partial" aria-hidden="true"></span>* Partial year</li>
-            </ul>
-          </header>
-          <p id="chart-desc" class="sr-only">Bar chart of children reached per program year. 2021, partial year: 90. 2022: 210. 2023: 260. 2024: 300. 2025, partial year: 139. 2026, partial year: 130. The data table below lists the same values.</p>
-          <div class="chart__plot js-chart-plot" role="group" aria-label="Children reached per program year, one bar per year"></div>
-          <div class="chart__tip" role="status" aria-live="polite"></div>
-          <div class="sr-only">
-            <table>
-              <caption>Children reached per program year (* partial year)</caption>
-              <thead><tr><th scope="col">Program year</th><th scope="col">Children reached</th><th scope="col">Year type</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">2021*</th><td>90</td><td>Partial year</td></tr>
-                <tr><th scope="row">2022</th><td>210</td><td>Full year</td></tr>
-                <tr><th scope="row">2023</th><td>260</td><td>Full year</td></tr>
-                <tr><th scope="row">2024</th><td>300</td><td>Full year</td></tr>
-                <tr><th scope="row">2025*</th><td>139</td><td>Partial year</td></tr>
-                <tr><th scope="row">2026*</th><td>130</td><td>Partial year</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
+          </article>
 
-        <!-- Programs -->
-        <article class="panel panel--stops" aria-labelledby="stops-title">
-          <header class="panel__head">
-            <div>
-              <h2 id="stops-title" class="panel__title display">Reach by program</h2>
-              <p class="panel__sub">The five stops on the MoW route</p>
+          <article class="card panel panel--mission" aria-labelledby="why-title">
+            <div class="mission__quote">
+              <h3 id="why-title" class="panel__kicker">What drives us</h3>
+              <figure class="quote quote--big">
+                <blockquote><p class="hand">“You can<span class="apos">’</span>t choose what you<span class="apos">’</span>re not exposed to.”</p></blockquote>
+                <figcaption>— Montessori on Wheels</figcaption>
+              </figure>
             </div>
-            <a class="panel__link" href="#route">Ride the route<span aria-hidden="true"> ↓</span></a>
-          </header>
-          <ol class="minis" role="list">
-            <li class="mini" style="--k:1" data-color="yellow"><span class="mini__num" aria-hidden="true">1</span><span class="mini__name"><span class="sr-only">Stop 1: </span>Exposure to Montessori <span class="mini__tag">Access</span></span><span class="mini__fig"><strong class="display">1,240</strong> children</span></li>
-            <li class="mini" style="--k:.70" data-color="coral"><span class="mini__num" aria-hidden="true">2</span><span class="mini__name"><span class="sr-only">Stop 2: </span>Caregiver &amp; Child <span class="mini__tag">Family</span></span><span class="mini__fig"><strong class="display">610</strong> families</span></li>
-            <li class="mini" style="--k:.38" data-color="sky"><span class="mini__num" aria-hidden="true">3</span><span class="mini__name"><span class="sr-only">Stop 3: </span>Targeted Interventions <span class="mini__tag">Support</span></span><span class="mini__fig"><strong class="display">180</strong> children in literacy support</span></li>
-            <li class="mini" style="--k:.14" data-color="lavender"><span class="mini__num" aria-hidden="true">4</span><span class="mini__name"><span class="sr-only">Stop 4: </span>Community Partnerships <span class="mini__tag">Village</span></span><span class="mini__fig"><strong class="display">24</strong> partner organizations</span></li>
-            <li class="mini" style="--k:.05" data-color="star"><span class="mini__num" aria-hidden="true">5</span><span class="mini__name"><span class="sr-only">Stop 5: </span>Embedded Learning <span class="mini__tag">Beyond Denver</span></span><span class="mini__fig"><strong class="display">3</strong> partners learning the framework</span></li>
-          </ol>
-        </article>
+            <div class="mission__body">
+              <h4 class="panel__kicker">Our mission</h4>
+              <p class="mission__text">To provide high-quality, accessible Montessori education to children in underserved communities by <mark>bringing the classroom to them</mark>, fostering independence, creativity, and a love for learning in every child, regardless of location or circumstance.</p>
+            </div>
+            <svg class="mission__bus" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
+          </article>
 
-        <!-- What drives us -->
-        <article class="panel panel--why" id="why" aria-labelledby="why-title">
-          <div class="why__side">
-            <h2 id="why-title" class="panel__eyebrow">What drives us</h2>
-            <figure class="why__quote">
-              <blockquote><p class="display">“You can<span class="apos">’</span>t choose what you<span class="apos">’</span>re not exposed to.”</p></blockquote>
-              <figcaption>— Montessori on Wheels</figcaption>
-            </figure>
-          </div>
-          <div class="why__side">
-            <h3 class="panel__eyebrow">Our mission</h3>
-            <p class="why__mission">To provide high-quality, accessible Montessori education to children in underserved communities by <mark>bringing the classroom to them</mark>, fostering independence, creativity, and a love for learning in every child, regardless of location or circumstance.</p>
-          </div>
-          <svg class="why__bus" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
-        </article>
-
-        <!-- Milestones -->
-        <article class="panel panel--milestones" aria-labelledby="ms-title">
-          <header class="panel__head">
-            <h2 id="ms-title" class="panel__title display">Milestones</h2>
-            <a class="panel__link" href="#milestones">Road trip<span aria-hidden="true"> ↓</span></a>
-          </header>
-          <ol class="timeline" role="list">
-            <li class="timeline__stop">
-              <span class="timeline__pin timeline__pin--yellow" aria-hidden="true"></span>
-              <p class="timeline__date display">June 2021</p>
-              <p class="timeline__text">Montessori on Wheels launches in Denver</p>
-            </li>
-            <li class="timeline__stop">
-              <span class="timeline__pin timeline__pin--coral" aria-hidden="true"></span>
-              <p class="timeline__date display">2026</p>
-              <p class="timeline__text">Partnership signed with Keres Children’s Learning Center, New Mexico</p>
-            </li>
-            <li class="timeline__stop">
-              <span class="timeline__pin timeline__pin--lavender" aria-hidden="true"></span>
-              <p class="timeline__date display">Oct 2026</p>
-              <p class="timeline__text">Keres engagement begins (through Feb 2027)</p>
-            </li>
-          </ol>
-        </article>
-      </div>
-
-      <a class="scrollcue" href="#route">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 120 74" width="44" height="27"><use href="#i-bus"/></svg>
-        Take the ride: the story behind the numbers
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18"><path d="M12 5v13m0 0l-5-5m5 5l5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </section>
-
-    <!-- ============ STORY: THE ROUTE ============ -->
-    <section class="section route-section" id="route" aria-labelledby="route-title">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow"><span class="eyebrow__dot eyebrow__dot--coral" aria-hidden="true"></span>Take the ride</p>
-          <h2 id="route-title" class="display h2">Ride the MoW route</h2>
-          <p class="section__intro">Every program is a stop where the classroom meets a neighborhood. Scroll to ride along, or choose a stop to pull the bus over.</p>
-        </header>
-
-        <div class="route js-route">
-          <svg class="route__svg" aria-hidden="true" focusable="false"></svg>
-          <ol class="stops" role="list">
-            <li class="stop" data-stop="0" data-value="1240" data-color="yellow">
-              <button class="stop__card" type="button" aria-describedby="stop-hint">
-                <span class="stop__num" aria-hidden="true">1</span>
-                <span class="stop__meta"><span class="sr-only">Stop 1: </span><span class="stop__name">Exposure to Montessori</span>
-                <span class="stop__tag">Access</span></span>
-                <span class="stop__figure"><span class="stop__value display">1,240</span> <span class="stop__unit">children</span></span>
-              </button>
-            </li>
-            <li class="stop" data-stop="1" data-value="610" data-color="coral">
-              <button class="stop__card" type="button" aria-describedby="stop-hint">
-                <span class="stop__num" aria-hidden="true">2</span>
-                <span class="stop__meta"><span class="sr-only">Stop 2: </span><span class="stop__name">Caregiver &amp; Child</span>
-                <span class="stop__tag">Family</span></span>
-                <span class="stop__figure"><span class="stop__value display">610</span> <span class="stop__unit">families</span></span>
-              </button>
-            </li>
-            <li class="stop" data-stop="2" data-value="180" data-color="sky">
-              <button class="stop__card" type="button" aria-describedby="stop-hint">
-                <span class="stop__num" aria-hidden="true">3</span>
-                <span class="stop__meta"><span class="sr-only">Stop 3: </span><span class="stop__name">Targeted Interventions</span>
-                <span class="stop__tag">Support</span></span>
-                <span class="stop__figure"><span class="stop__value display">180</span> <span class="stop__unit">children in literacy support</span></span>
-              </button>
-            </li>
-            <li class="stop" data-stop="3" data-value="24" data-color="lavender">
-              <button class="stop__card" type="button" aria-describedby="stop-hint">
-                <span class="stop__num" aria-hidden="true">4</span>
-                <span class="stop__meta"><span class="sr-only">Stop 4: </span><span class="stop__name">Community Partnerships</span>
-                <span class="stop__tag">Village</span></span>
-                <span class="stop__figure"><span class="stop__value display">24</span> <span class="stop__unit">partner organizations</span></span>
-              </button>
-            </li>
-            <li class="stop" data-stop="4" data-value="3" data-color="star">
-              <button class="stop__card" type="button" aria-describedby="stop-hint">
-                <span class="stop__num" aria-hidden="true">5</span>
-                <span class="stop__meta"><span class="sr-only">Stop 5: </span><span class="stop__name">Embedded Learning</span>
-                <span class="stop__tag">Beyond Denver</span></span>
-                <span class="stop__figure"><span class="stop__value display">3</span> <span class="stop__unit">partners learning the framework</span></span>
-              </button>
-            </li>
-          </ol>
-          <p id="stop-hint" class="sr-only">Moves the bus to this stop on the route.</p>
-        </div>
-
-        <figure class="voice">
-          <svg class="voice__icon" aria-hidden="true" focusable="false" viewBox="0 0 120 74"><use href="#i-bus"/></svg>
-          <blockquote><p class="display">“When is the bus coming back?”</p></blockquote>
-          <figcaption>The question families ask most after an exposure visit (from the MoW Strategic Roadmap).</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ============ MILESTONES ============ -->
-    <section class="section milestones-section" id="milestones" aria-labelledby="milestones-title">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Two states reached</p>
-          <h2 id="milestones-title" class="display h2">The road trip so far</h2>
-        </header>
-
-        <div class="trip">
-          <figure class="trip__map card">
-            <svg viewBox="0 0 460 420" role="img" aria-labelledby="map-title map-desc">
-              <title id="map-title">Route from Denver, Colorado to New Mexico</title>
-              <desc id="map-desc">A stylized map of Colorado above New Mexico. A dashed road runs from Denver south to Keres Children’s Learning Center in New Mexico.</desc>
-              <g stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round">
-                <path d="M40 22h372l-2 172H40z" fill="#9BCBEB"/>
-                <path d="M40 206h346l-2 168H112v18H40z" fill="#C1A7E2"/>
-              </g>
-              <text x="62" y="58" class="map__state">COLORADO</text>
-              <text x="62" y="240" class="map__state">NEW MEXICO</text>
-              <path class="map__route" d="M282 92 C 330 150, 200 170, 230 230 S 190 270, 200 286" fill="none" stroke="#1A1A1A" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round"/>
-              <g transform="translate(262 72)"><use href="#i-star" width="40" height="40"/></g>
-              <text x="304" y="100" class="map__label">Denver</text>
-              <g transform="translate(180 268)"><use href="#i-heart" width="40" height="40"/></g>
-              <text x="132" y="330" class="map__label">Keres Children’s</text>
-              <text x="132" y="350" class="map__label">Learning Center</text>
-              <g class="map__bus" transform="translate(196 160) rotate(12)"><use href="#i-bus" width="72" height="44"/></g>
-            </svg>
-          </figure>
-
-          <div class="trip__story">
-            <p class="trip__big display"><span class="js-count" data-value="2">2</span> <span>states reached</span></p>
-            <p>The bus started on Denver’s neighborhood streets. In 2026 the route reached a second state: a partnership with Keres Children’s Learning Center in New Mexico.</p>
-            <p>It is the first concrete step toward the roadmap’s goal for 2028: two pilot communities offering their own culturally relevant, MoW-inspired Montessori programs.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ OUR ROOTS ============ -->
-    <section class="section roots-section" id="roots" aria-labelledby="roots-title">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow"><span class="eyebrow__dot eyebrow__dot--lavender" aria-hidden="true"></span>Our roots</p>
-          <h2 id="roots-title" class="display h2">Where the bus comes from</h2>
-        </header>
-        <div class="roots">
-          <div class="roots__story card">
-            <h3 class="display h3">Rungano: telling our stories</h3>
-            <p>The work takes its name from the Shona word <em>Rungano</em>, “telling our stories.” It honors parents, families and communities as children’s first teachers, and blends authentic Montessori with African indigenous knowledge.</p>
-            <p class="roots__path"><span>Exploration</span><svg aria-hidden="true" focusable="false" viewBox="0 0 60 20" width="48" height="16"><path d="M2 10h50m-8-7l9 7-9 7" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sustainable growth</span></p>
-            <p>The first years were for building, testing and learning with families and partners in Denver, Aurora and beyond. The next chapter is about setting the foundation so the work can spread with quality and care.</p>
-          </div>
-          <div class="roots__values">
-            <h3 class="display h3">What rides with us</h3>
+          <article class="card glass panel panel--values" aria-labelledby="v-title">
+            <header class="panel__head">
+              <div>
+                <h3 id="v-title" class="panel__title">What rides with us</h3>
+                <p class="panel__sub"><em>Rungano</em> is Shona for “telling our stories”: families are children’s first teachers.</p>
+              </div>
+            </header>
             <ul class="values" role="list">
               <li class="value value--yellow"><strong>Respect for the Child</strong><span>Children are capable, curious, and worthy of trust.</span></li>
               <li class="value value--coral"><strong>Families, Community &amp; Ancestors</strong><span>Families are children’s first educators.</span></li>
@@ -422,52 +608,51 @@
               <li class="value value--lavender"><strong>Equity &amp; Liberation</strong><span>Education must center justice and freedom for children of color.</span></li>
               <li class="value value--white"><strong>Joyousness</strong><span>Children’s joy and creativity are the heartbeat of the work.</span></li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+          </article>
 
-    <!-- ============ HOW CHANGE HAPPENS ============ -->
-    <section class="section change-section" id="change" aria-labelledby="change-title">
-      <div class="wrap">
-        <header class="section__head">
-          <p class="eyebrow"><span class="eyebrow__dot eyebrow__dot--sky" aria-hidden="true"></span>School programs logic model</p>
-          <h2 id="change-title" class="display h2">How change happens</h2>
-        </header>
-        <ol class="change" role="list">
-          <li class="change__step"><strong>Inputs</strong><span>Teachers, culturally relevant curriculum, Montessori materials, the bus, mentors and community partners.</span></li>
-          <li class="change__step"><strong>Activities</strong><span>Montessori programs personalized for each school and student, family outreach and volunteering.</span></li>
-          <li class="change__step"><strong>Outputs</strong><span>Bus visits, school partnerships, children showing up and building portfolios of their work.</span></li>
-          <li class="change__step"><strong>Outcomes</strong><span>Children engage in culturally relevant learning and can name their passions and areas for growth.</span></li>
-          <li class="change__step change__step--impact"><strong>Impact</strong><span>Children of color express their joy, creativity, and love of learning.</span></li>
-        </ol>
-      </div>
-    </section>
+          <article class="card glass panel panel--change" aria-labelledby="ch-title">
+            <header class="panel__head">
+              <div>
+                <h3 id="ch-title" class="panel__title">How change happens</h3>
+                <p class="panel__sub">School programs logic model · from exploration to sustainable growth</p>
+              </div>
+            </header>
+            <ol class="change" role="list">
+              <li class="change__step"><strong>Inputs</strong><span>Teachers, culturally relevant curriculum, Montessori materials, the bus, mentors and community partners.</span></li>
+              <li class="change__step"><strong>Activities</strong><span>Montessori programs personalized for each school and student, family outreach and volunteering.</span></li>
+              <li class="change__step"><strong>Outputs</strong><span>Bus visits, school partnerships, children showing up and building portfolios of their work.</span></li>
+              <li class="change__step"><strong>Outcomes</strong><span>Children engage in culturally relevant learning and can name their passions and areas for growth.</span></li>
+              <li class="change__step change__step--impact"><strong>Impact</strong><span>Children of color express their joy, creativity, and love of learning.</span></li>
+            </ol>
+          </article>
 
-    <!-- ============ RIDE WITH US ============ -->
-    <section class="section ride-section" id="ride" aria-labelledby="ride-title">
-      <div class="wrap">
-        <div class="ride">
-          <div class="ride__copy">
-            <h2 id="ride-title" class="display h2">Ride with us</h2>
-            <p>Every family deserves access to joyful, culturally affirming Montessori learning. Help keep the bus rolling into the next neighborhood, and the next community.</p>
-            <div class="ride__actions">
-              <a class="btn btn--ink" href="https://www.montessorionwheels.org/why-give">Why give</a>
-              <a class="btn btn--paper" href="https://www.montessorionwheels.org/">Visit montessorionwheels.org</a>
-              <a class="btn btn--paper" href="https://www.montessorionwheels.org/contact-us">Contact the team</a>
+          <article class="card panel panel--ride" id="ride" aria-labelledby="ride-title">
+            <div class="ride__copy">
+              <h3 id="ride-title" class="ride__title">Ride with us</h3>
+              <p>Every family deserves access to joyful, culturally affirming Montessori learning. Help keep the bus rolling into the next neighborhood, and the next community.</p>
+              <div class="ride__actions">
+                <a class="btn btn--ink" href="https://www.montessorionwheels.org/why-give">Why give</a>
+                <a class="btn btn--glass" href="https://www.montessorionwheels.org/">Visit montessorionwheels.org</a>
+                <a class="btn btn--glass" href="https://www.montessorionwheels.org/contact-us">Contact the team</a>
+              </div>
             </div>
-          </div>
-          <img class="ride__logo" src="assets/mow-bus-circle.webp" width="256" height="256" alt="" loading="lazy" decoding="async">
+            <img class="ride__logo" src="assets/mow-bus-circle.webp" width="256" height="256" alt="" loading="lazy" decoding="async">
+          </article>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <p class="footer__line">Montessori on Wheels · Denver, Colorado · Bringing the classroom to the community</p>
-      <p><a href="mailto:tatenda@montessorionwheels.org">tatenda@montessorionwheels.org</a></p>
-    </div>
-  </footer>
+        <a class="nextstop nextstop--back js-next" href="#overview">
+          <span class="nextstop__sign" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-sign"/></svg></span>
+          <span class="nextstop__text"><span class="nextstop__kicker">End of the line</span><span class="nextstop__dest">Back to the overview</span></span>
+          <span class="nextstop__road" aria-hidden="true"><svg class="nextstop__bus" viewBox="0 0 120 74"><use href="#i-bus"/></svg></span>
+          <svg class="nextstop__arrow" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><path d="M12 19V6m0 0l-5 5m5-5l5 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </section>
+
+      <footer class="footer">
+        <p class="footer__line">Montessori on Wheels · Denver, Colorado · Bringing the classroom to the community</p>
+        <p><a href="mailto:tatenda@montessorionwheels.org">tatenda@montessorionwheels.org</a></p>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>

@@ -4,9 +4,13 @@
 
 An interactive impact dashboard for [Montessori on Wheels](https://www.montessorionwheels.org) (MoW), a Denver nonprofit that brings Montessori education to Black, Brown and low-income families in their own neighborhoods, using a mobile classroom on a bus.
 
-The page opens on a **one-screen dashboard**. Every figure from the impact report is visible without scrolling on a laptop: four headline KPIs, community stats, a hand-drawn chart of children reached per program year, the five program stops, milestones, and the mission. Type and spacing scale with screen height to keep it on one screen.
+The report is delivered as **three linked dashboards** in an app-style layout. A glass sidebar holds navigation, and a soft field of the brand colours sits behind frosted-glass cards:
 
-Below it, **“Take the ride”** tells the story behind the numbers. A small bus drives a winding road through the five program stops as you scroll or click. After that come a Colorado → New Mexico road-trip map, MoW’s roots and values, a “How change happens” strip, and a call to action.
+1. **Overview.** An illustrated Denver street where the MoW bus drives itself between the five program stops and shows each stop's reach. Click a stop to pull the bus over. Below it sit the four headline numbers, the chart of children reached per program year, the five stops, community stats, and the quote that drives the work.
+2. **Reach & growth.** A winding route through the five program stops, with the bus following your scroll. Next to it, a larger yearly chart where you can choose a year to bring into focus, plus the families' question “When is the bus coming back?”.
+3. **Community & journey.** Community stats, the Colorado → New Mexico road trip with milestones, the mission, MoW's values (Rungano), the “How change happens” logic-model strip, and a call to action.
+
+A “Next stop” button at the bottom of each dashboard sends a tiny bus along the road and moves you to the next dashboard.
 
 ## Data source
 
@@ -19,11 +23,12 @@ Below it, **“Take the ride”** tells the story behind the numbers. A small bu
 - Static site: `index.html`, `styles.css`, `app.js`, `assets/`. No framework, no build step, no chart library.
 - The charts and the route are hand-written SVG, drawn in vanilla JS. Animations are driven by IntersectionObserver and scroll position.
 - Brand palette: Sunshine Yellow `#F0B323`, Coral Red `#E2665C`, Sky Blue `#9BCBEB`, Lavender `#C1A7E2`, ink `#1A1A1A` and paper `#FFFBF2`.
-- Type: Gaegu (display) and Nunito (body). Both are self-hosted Latin subsets (SIL Open Font License) with `font-display: swap`.
+- Type: Plus Jakarta Sans for the interface and numbers. Gaegu, the hand-lettered face that echoes the logo, is kept for the headline and quotes. Both are self-hosted Latin subsets (SIL Open Font License) with `font-display: swap`.
 - Accessibility: semantic landmarks, one `<h1>`, keyboard-operable stops and bars, a screen-reader data table behind the chart, visible focus states, and `prefers-reduced-motion` support (final values, static bus).
-- Print stylesheet: **Download summary** (`window.print()`) prints the dashboard as a one-page landscape A4 summary.
+- Print stylesheet: **Download summary** (`window.print()`) prints the Overview and Community & journey dashboards as a two-page landscape A4 summary.
 - Open Graph and Twitter preview image (`assets/og-image.png`, 1200×630).
-- Page weight is about 210 KB.
+- Glassmorphism uses `backdrop-filter`. All motion respects `prefers-reduced-motion`.
+- Page weight is about 165 KB.
 
 ## Run locally
 
